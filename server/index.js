@@ -13,7 +13,9 @@ import messageRoutes from './routes/messages.js';
 import User from './models/User.js';
 import Message from './models/Message.js';
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '../.env') });
+dotenv.config(); // Also check current directory
+
 
 const app = express();
 const server = http.createServer(app);

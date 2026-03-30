@@ -3,7 +3,7 @@ import { io, Socket } from "socket.io-client";
 import { useAuth } from "@/contexts/AuthContext";
 import api from "@/lib/api";
 
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || "http://localhost:5000";
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || "";
 
 export interface Profile {
   id: string;
