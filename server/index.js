@@ -50,9 +50,16 @@ app.get('*', (req, res) => {
 
 // Database Connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/chat-app';
-mongoose.connect(MONGODB_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log('MongoDB connection error:', err));
+mongoose.connect(MONGODB_URI, {
+  serverSelectionTimeoutMS: 5000,
+})
+  .then(() => console.log('✅ MongoDB connected successfully'))
+  .catch((err) => {
+    console.error('❌ MongoDB connection error details:');
+    console.error('Error Code:', err.code);
+    console.error('Error Name:', err.name);
+    console.error('Error Message:', err.message);
+  });
 
 // Socket.IO Logic
 const users = new Map(); // userId -> socketId
