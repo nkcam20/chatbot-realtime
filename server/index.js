@@ -13,6 +13,9 @@ import messageRoutes from './routes/messages.js';
 import User from './models/User.js';
 import Message from './models/Message.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 dotenv.config({ path: path.join(__dirname, '../.env') });
 dotenv.config(); // Also check current directory
 
@@ -26,8 +29,6 @@ const io = new Server(server, {
   },
 });
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 app.use(cors());
 app.use(express.json());
